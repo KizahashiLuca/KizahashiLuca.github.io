@@ -14,7 +14,13 @@
 
 <script type="text/javascript">
   function Calc_windmill(n, d, c, ench){
-    wm.result.value = Math.pow(((n.value * 2 + 2)/4),2) * d.value * 3.097 * c.value * ench.value / 6;
+    wm.ore_result.value = Math.pow(((n.value * 2 + 2)/4),2) * d.value * 3.097 * c.value / 6;
+    wm.result.value = wm.ore_result.value * ench.value;
+  }
+  
+  function Calc_windmill_per(n, d, c, ench){
+    wmp.ore_result2.value = (2 * n.value + 1) / 4 * d.value * 3.097 * c.value / 6;
+    wmp.result2.value = wmp.ore_result2.value * ench.value;
   }
 </script>
 
@@ -24,34 +30,93 @@
     <div class="heading">
       <h1>MC-tools</h1>
     </div>
+    
+    <!-- 概要 -->
+    <div class="intro">
     <h2>概要</h2>
     <p>マイクラで使用する諸計算のWebサービスです</p>
     <p>Let's play Minecraft competitively!</p>
+    </div>
+    
+    <!-- 本題 -->
+    <div class="calc">
+    <h2>チャンク依拠風車型ブランチマイニングの計算</h2>
+    <!-- 折りたたみタブ -->    
+    <h3><div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
+<a style="cursor:pointer;">合計</a>
+	</div></h3>
+	<!--// 折りたたみタブ -->
+
+    <!-- 合計計算フォームとスクリプト -->    
+    <div id="open" style="display:none;clear:both;">
     <form name="wm" onsubmit="return false;">
       <p>
       風車型 <br>
-      <input type="number" name="n" min="1" max="500" step="1" required>周 <br>
+      <input type="number" name="n1" min="1" max="500" step="1" required>周 <br>
       </p>
       <p>
       Spawn Frequency: 0-40 (default 1)<br>
       1チャンクに含まれるダイヤモンドの鉱脈数 (デフォルトは１)<br>
-      <input type="number" name="d" min="0" max="40" step="1" value="1" required>鉱脈<br>
+      <input type="number" name="d1" min="0" max="40" step="1" value="1" required>鉱脈<br>
       </p>
       <p>
       洞窟係数 (経験則 今のところ2.5)<br>
-      <input type="number" name="c" min="0" value="2.5" step="0.1"><br>
+      <input type="number" name="c1" min="0" value="2.5" step="0.1"><br>
       </p>
       <p>
       ピッケルのエンチャント <br>
-      <label><input type="radio" name="ench" value="1" checked>なし</label>
-      <label><input type="radio" name="ench" value="1.33">幸運Ⅰ</label>
-      <label><input type="radio" name="ench" value="1.75">幸運Ⅱ</label>
-      <label><input type="radio" name="ench" value="2.20">幸運Ⅲ</label>
+      <label><input type="radio" name="ench1" value="1" checked>なし</label>
+      <label><input type="radio" name="ench1" value="1.33">幸運Ⅰ</label>
+      <label><input type="radio" name="ench1" value="1.75">幸運Ⅱ</label>
+      <label><input type="radio" name="ench1" value="2.20">幸運Ⅲ</label>
       </p>
-      <input type="submit" id="calc" value="計算" onclick="Calc_windmill(n,d,c,ench)">
+      <input type="submit" id="calc1" value="計算" onclick="Calc_windmill(n1,d1,c1,ench1)">
+      <input type="reset" value="リセット">
       <p>
-      期待値 <output id="result"></output> 個
+      ダイヤ鉱石期待値 <output id="ore_result"></output> 個<br>
+      ダイヤモンド期待値 <output id="result"></output> 個
       </p>
+    </form>
+    </div>
+    
+    <!-- 折りたたみタブ -->    
+    <h3><div onclick="obj=document.getElementById('open2').style; obj.display=(obj.display=='none')?'block':'none';">
+<a style="cursor:pointer;">一周</a>
+	</div></h3>
+	<!--// 折りたたみタブ -->
+
+    <!-- 一周計算フォームとスクリプト -->    
+    <div id="open2" style="display:none;clear:both;">
+    <form name="wmp" onsubmit="return false;">
+      <p>
+      風車型 <br>
+      <input type="number" name="n2" min="1" max="500" step="1" required>周 <br>
+      </p>
+      <p>
+      Spawn Frequency: 0-40 (default 1)<br>
+      1チャンクに含まれるダイヤモンドの鉱脈数 (デフォルトは１)<br>
+      <input type="number" name="d2" min="0" max="40" step="1" value="1" required>鉱脈<br>
+      </p>
+      <p>
+      洞窟係数 (経験則 今のところ2.5)<br>
+      <input type="number" name="c2" min="0" value="2.5" step="0.1"><br>
+      </p>
+      <p>
+      ピッケルのエンチャント <br>
+      <label><input type="radio" name="ench2" value="1" checked>なし</label>
+      <label><input type="radio" name="ench2" value="1.33">幸運Ⅰ</label>
+      <label><input type="radio" name="ench2" value="1.75">幸運Ⅱ</label>
+      <label><input type="radio" name="ench2" value="2.20">幸運Ⅲ</label>
+      </p>
+      <input type="submit" id="calc2" value="計算" onclick="Calc_windmill_per(n2,d2,c2,ench2)">
+      <input type="reset" value="リセット">
+      <p>
+      ダイヤ鉱石期待値 <output id="ore_result2"></output> 個<br>
+      ダイヤモンド期待値 <output id="result2"></output> 個
+      </p>
+    </form>
+    </div>
+    </div>
   </div>
 </div>
 </body>
