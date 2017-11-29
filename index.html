@@ -10,8 +10,14 @@
 <link rel="shortcut icon" href="imgs/icon.ico" type="image/x-icon">
 <title>マイクラ諸々計算Webサービス</title>
 <!--<script src="./js/code.js" type="text/javascript" charset="utf-8"></script>-->
-     
 </head>
+
+<script type="text/javascript">
+  function Calc_windmill(n, d, c, ench){
+    wm.result.value = Math.pow(((n.value * 2 + 2)/4),2) * d.value * 3.097 * c.value * ench.value / 6;
+  }
+</script>
+
 <body>
 <div class="container" style="padding:10px 0">
   <div class="container">
@@ -21,6 +27,31 @@
     <h2>概要</h2>
     <p>マイクラで使用する諸計算のWebサービスです</p>
     <p>Let's play Minecraft competitively!</p>
+    <form name="wm" onsubmit="return false;">
+      <p>
+      風車型 <br>
+      <input type="number" name="n" min="1" max="500" step="1" required>周 <br>
+      </p>
+      <p>
+      Spawn Frequency: 0-40 (default 1)<br>
+      1チャンクに含まれるダイヤモンドの鉱脈数 (デフォルトは１)<br>
+      <input type="number" name="d" min="0" max="40" step="1" value="1" required>鉱脈<br>
+      </p>
+      <p>
+      洞窟係数 (経験則 今のところ2.5)<br>
+      <input type="number" name="c" min="0" value="2.5" step="0.1"><br>
+      </p>
+      <p>
+      ピッケルのエンチャント <br>
+      <label><input type="radio" name="ench" value="1" checked>なし</label>
+      <label><input type="radio" name="ench" value="1.33">幸運Ⅰ</label>
+      <label><input type="radio" name="ench" value="1.75">幸運Ⅱ</label>
+      <label><input type="radio" name="ench" value="2.20">幸運Ⅲ</label>
+      </p>
+      <input type="submit" id="calc" value="計算" onclick="Calc_windmill(n,d,c,ench)">
+      <p>
+      期待値 <output id="result"></output> 個
+      </p>
   </div>
 </div>
 </body>
