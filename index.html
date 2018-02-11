@@ -9,17 +9,16 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="shortcut icon" href="imgs/icon.ico" type="image/x-icon">
 <title>マイクラ諸々計算Webサービス</title>
-<!--<script src="./js/code.js" type="text/javascript" charset="utf-8"></script>-->
 </head>
 
 <script type="text/javascript">
   function Calc_windmill(n, d, c, ench){
-    wm.ore_result.value = Math.pow(((n.value * 2 + 2)/4),2) * d.value * 3.097 * c.value / 6;
+    wm.ore_result.value = Math.pow(((n.value * 2 + 2)/4),2) * d.value * 3.67 * c.value / 6;
     wm.result.value = wm.ore_result.value * ench.value;
   }
   
   function Calc_windmill_per(n, d, c, ench){
-    wmp.ore_result2.value = (2 * n.value + 1) / 4 * d.value * 3.097 * c.value / 6;
+    wmp.ore_result2.value = (2 * n.value + 1) / 4 * d.value * 3.67 * c.value / 6;
     wmp.result2.value = wmp.ore_result2.value * ench.value;
   }
 </script>
@@ -37,18 +36,29 @@
     <p>マイクラで使用する諸計算のWebサービスです</p>
     <p>Let's play Minecraft competitively!</p>
     </div>
+    <div class="intro">
+    <h2>動画</h2>
+    <p>チャンク依拠風車型ブランチマイニング　初出動画<br>
+    <iframe width="312" height="176" src="https://ext.nicovideo.jp/thumb/sm31306281" scrolling="no" style="border:solid 1px #ccc;" frameborder="0"><a href="http://www.nicovideo.jp/watch/sm31306281">【Minecraft】チャンク依拠風車型ブランチマイニングの提案</a></iframe>
+    </p>
+    <p>チャンク依拠風車型ブランチマイニング　State_of_the_art<br>
+    <iframe width="312" height="176" src="https://ext.nicovideo.jp/thumb/sm32719893" scrolling="no" style="border:solid 1px #ccc;" frameborder="0"><a href="http://www.nicovideo.jp/watch/sm32719893">【Minecraft】チャンク依拠風車型ブランチマイニングの期待値補正</a></iframe>
+    </p>
+    <p>このサイトは後者に準拠</p>
+    <p> 2018. 2.11 20:32 更新</p>
+    </div>
     
     <!-- 本題 -->
     <div class="calc">
     <h2>チャンク依拠風車型ブランチマイニングの計算</h2>
     <!-- 折りたたみタブ -->    
-    <h3><div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
+    <h3><div onclick="obj=document.getElementById('open1').style; obj.display=(obj.display=='none')?'block':'none';">
 <a style="cursor:pointer;">▼合計</a>
 	</div></h3>
 	<!--// 折りたたみタブ -->
 
     <!-- 合計計算フォームとスクリプト -->    
-    <div id="open" style="display:none;clear:both;">
+    <div id="open1" style="display:none;clear:both;">
     <form name="wm" onsubmit="return false;">
       <p>
       風車型 <br>
@@ -60,8 +70,17 @@
       <input type="number" name="d1" min="0" max="40" step="1" value="1" required>鉱脈<br>
       </p>
       <p>
-      洞窟係数 (経験則 今のところ2.5)<br>
-      <input type="number" name="c1" min="0" value="2.5" step="0.1"><br>
+      洞窟係数 (経験則 最新 1.98)<br>
+      <input type="number" name="c1" min="0" value="1.98" step="0.01"><br>
+      </p>
+      <p>
+      ブランチマイニングで採掘する鉱石 (未実装)<br>
+      <label><input type="checkbox" name="pickore1" value="0.09">石炭鉱石</label>
+      <label><input type="checkbox" name="pickore1" value="0.08">鉄鉱石</label>
+      <label><input type="checkbox" name="pickore1" value="0.01">金鉱石</label>
+      <label><input type="checkbox" name="pickore1" value="0.09">レッドストーン鉱石</label>
+      <label><input type="checkbox" name="pickore1" value="0.01">ラピスラズリ鉱石</label>
+      <label><input type="checkbox" name="pickore1" value="0.00">エメラルド鉱石</label>
       </p>
       <p>
       ピッケルのエンチャント <br>
@@ -98,8 +117,17 @@
       <input type="number" name="d2" min="0" max="40" step="1" value="1" required>鉱脈<br>
       </p>
       <p>
-      洞窟係数 (経験則 今のところ2.5)<br>
-      <input type="number" name="c2" min="0" value="2.5" step="0.1"><br>
+      洞窟係数 (経験則 最新 1.98)<br>
+      <input type="number" name="c2" min="0" value="1.98" step="0.01"><br>
+      </p>
+      <p>
+      ブランチマイニングで採掘する鉱石 (未実装)<br>
+      <label><input type="checkbox" name="pickore2" value="0.09">石炭鉱石</label>
+      <label><input type="checkbox" name="pickore2" value="0.08">鉄鉱石</label>
+      <label><input type="checkbox" name="pickore2" value="0.01">金鉱石</label>
+      <label><input type="checkbox" name="pickore2" value="0.09">レッドストーン鉱石</label>
+      <label><input type="checkbox" name="pickore2" value="0.01">ラピスラズリ鉱石</label>
+      <label><input type="checkbox" name="pickore2" value="0.00">エメラルド鉱石</label>
       </p>
       <p>
       ピッケルのエンチャント <br>
@@ -116,6 +144,47 @@
       </p>
     </form>
     </div>
+
+    <!-- 折りたたみタブ -->    
+    <!--<h3><div onclick="obj=document.getElementById('open3').style; obj.display=(obj.display=='none')?'block':'none';">
+<a style="cursor:pointer;">▼目的を決めて周回計算</a>
+	</div></h3>-->
+	<!--// 折りたたみタブ -->
+
+    <!-- 一周計算フォームとスクリプト -->    
+    <!--<div id="open3" style="display:none;clear:both;">
+    <form name="wmp" onsubmit="return false;">
+      <p>
+      目的のダイヤ鉱石数 <br>
+      <input type="number" name="ore_input" min="1" max="300000" step="1" required>個 <br>
+      　または<br>
+      目的のダイヤモンド個数 <br>
+      <input type="number" name="diamond_input" min="1" max="1000000" step="1" required>個 <br>
+      </p>
+      <p>
+      Spawn Frequency: 0-40 (default 1)<br>
+      1チャンクに含まれるダイヤモンドの鉱脈数 (デフォルトは１)<br>
+      <input type="number" name="d3" min="0" max="40" step="1" value="1" required>鉱脈<br>
+      </p>
+      <p>
+      洞窟係数 (経験則 今のところ2.5)<br>
+      <input type="number" name="c3" min="0" value="2.5" step="0.1"><br>
+      </p>
+      <p>
+      ピッケルのエンチャント <br>
+      <label><input type="radio" name="ench3" value="1" checked>なし</label>
+      <label><input type="radio" name="ench3" value="1.33">幸運Ⅰ</label>
+      <label><input type="radio" name="ench3" value="1.75">幸運Ⅱ</label>
+      <label><input type="radio" name="ench3" value="2.20">幸運Ⅲ</label>
+      </p>
+      <input type="submit" id="calc3" value="計算" onclick="Calc_windmill_per(n2,d2,c2,ench2)">
+      <input type="reset" value="リセット">
+      <p>
+      風車型ブランチマイニング 周回期待値<br>
+      <output id="result3"></output> 周
+      </p>
+    </form>
+    </div>-->
     </div>
   </div>
 </div>
