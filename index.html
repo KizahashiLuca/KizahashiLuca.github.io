@@ -2,191 +2,84 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="Minecraftの諸々を計算する">
+<meta name="description" content="top page">
 <meta name="author" content="KizahashiLuca">
 <meta name="keywords" content="Minecraft, マインクラフト, マイクラ">
 <meta name="viewport" content="width=device-width, initial-scale=1 minimal-ui">
-<link rel="stylesheet" href="css/style.css">
-<link rel="shortcut icon" href="imgs/icon.ico" type="image/x-icon">
-<title>マイクラ諸々計算Webサービス</title>
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./fonts/foundation-icons.css">
+<link rel="shortcut icon" href="./img/icon.ico" type="image/x-icon">
+<title>KizahashiLucaのページ</title>
 </head>
-
-<script type="text/javascript">
-  function Calc_windmill(n, d, c, ench){
-    wm.ore_result.value = Math.pow(((n.value * 2 + 2)/4),2) * d.value * 3.67 * c.value / 6;
-    wm.result.value = wm.ore_result.value * ench.value;
-  }
-  
-  function Calc_windmill_per(n, d, c, ench){
-    wmp.ore_result2.value = (2 * n.value + 1) / 4 * d.value * 3.67 * c.value / 6;
-    wmp.result2.value = wmp.ore_result2.value * ench.value;
-  }
-</script>
 
 <body>
 <div class="container" style="padding:10px 0">
   <div class="container">
     <div class="heading">
-      <h1>MC-tools</h1>
+      <h1>KizahashiLuca</h1>
     </div>
     
-    <!-- 概要 -->
-    <div class="intro">
-    <h2>概要</h2>
-    <p>マイクラで使用する諸計算のWebサービスです</p>
-    <p>Let's play Minecraft competitively!</p>
-    </div>
-    <div class="intro">
-    <h2>動画</h2>
-    <p>チャンク依拠風車型ブランチマイニング　初出動画<br>
-    <iframe width="312" height="176" src="https://ext.nicovideo.jp/thumb/sm31306281" scrolling="no" style="border:solid 1px #ccc;" frameborder="0"><a href="http://www.nicovideo.jp/watch/sm31306281">【Minecraft】チャンク依拠風車型ブランチマイニングの提案</a></iframe>
-    </p>
-    <p>チャンク依拠風車型ブランチマイニング　State_of_the_art<br>
-    <iframe width="312" height="176" src="https://ext.nicovideo.jp/thumb/sm32719893" scrolling="no" style="border:solid 1px #ccc;" frameborder="0"><a href="http://www.nicovideo.jp/watch/sm32719893">【Minecraft】チャンク依拠風車型ブランチマイニングの期待値補正</a></iframe>
-    </p>
-    <p>このサイトは後者に準拠</p>
-    <p> 2018. 2.11 20:32 更新</p>
-    </div>
+    <!-- 自己紹介 -->
+    <h2><span class="fi-icon fi-torso" aria-hidden="true"></span>About me</h2>
+    <p class="jap">Minecraftの実況動画をあげさせていただいてます。</p>
+    <!-- <p class="eng">Minecraft Streamer in Japan.</p> -->
+    <hr>
     
-    <!-- 本題 -->
-    <div class="calc">
-    <h2>チャンク依拠風車型ブランチマイニングの計算</h2>
-    <!-- 折りたたみタブ -->    
-    <h3><div onclick="obj=document.getElementById('open1').style; obj.display=(obj.display=='none')?'block':'none';">
-<a style="cursor:pointer;">▼合計</a>
-	</div></h3>
-	<!--// 折りたたみタブ -->
-
-    <!-- 合計計算フォームとスクリプト -->    
-    <div id="open1" style="display:none;clear:both;">
-    <form name="wm" onsubmit="return false;">
-      <p>
-      風車型 <br>
-      <input type="number" name="n1" min="1" max="500" step="1" required>周 <br>
-      </p>
-      <p>
-      Spawn Frequency: 0-40 (default 1)<br>
-      1チャンクに含まれるダイヤモンドの鉱脈数 (デフォルトは１)<br>
-      <input type="number" name="d1" min="0" max="40" step="1" value="1" required>鉱脈<br>
-      </p>
-      <p>
-      洞窟係数 (経験則 最新 1.98)<br>
-      <input type="number" name="c1" min="0" value="1.98" step="0.01"><br>
-      </p>
-      <p>
-      ブランチマイニングで採掘する鉱石 (未実装)<br>
-      <label><input type="checkbox" name="pickore1" value="0.09">石炭鉱石</label>
-      <label><input type="checkbox" name="pickore1" value="0.08">鉄鉱石</label>
-      <label><input type="checkbox" name="pickore1" value="0.01">金鉱石</label>
-      <label><input type="checkbox" name="pickore1" value="0.09">レッドストーン鉱石</label>
-      <label><input type="checkbox" name="pickore1" value="0.01">ラピスラズリ鉱石</label>
-      <label><input type="checkbox" name="pickore1" value="0.00">エメラルド鉱石</label>
-      </p>
-      <p>
-      ピッケルのエンチャント <br>
-      <label><input type="radio" name="ench1" value="1" checked>なし</label>
-      <label><input type="radio" name="ench1" value="1.33">幸運Ⅰ</label>
-      <label><input type="radio" name="ench1" value="1.75">幸運Ⅱ</label>
-      <label><input type="radio" name="ench1" value="2.20">幸運Ⅲ</label>
-      </p>
-      <input type="submit" id="calc1" value="計算" onclick="Calc_windmill(n1,d1,c1,ench1)">
-      <input type="reset" value="リセット">
-      <p>
-      ダイヤ鉱石期待値 <output id="ore_result"></output> 個<br>
-      ダイヤモンド期待値 <output id="result"></output> 個
-      </p>
-    </form>
-    </div>
+    <!-- 投稿動画 -->
+    <h2><span class="fi-icon fi-play-video" aria-hidden="true"></span>My videos</h2>
+    <ul type="circle">
+      <li><p class="jap-li"><a href="http://www.nicovideo.jp/mylist/58129946">きざはしるかの高さ縛りをやってみる</a></p>
+      <p class="eng-li">Minecraft Height Limit by KizahashiLuca</p></li>
+      <li><p class="jap-li"><a href="http://www.nicovideo.jp/mylist/58526630">きざはしるかのハードコア高さ縛り</a></p>
+      <p class="eng-li">Minecraft Height Limit on HARDCORE by KizahashiLuca</p></li>
+      <li><p class="jap-li"><a href="http://www.nicovideo.jp/watch/sm31306281">チャンク依拠風車型ブランチマイニングの提案</a></p>
+      <p class="eng-li">Proposal of Windmill Mining in accordance with chunks</p></li>
+      <li><p class="jap-li"><a href="http://www.nicovideo.jp/mylist/59828875">地底人たちのマルチ高さ縛り</a></p>
+      <p class="eng-li">Minecraft Height Limit Multi-play</p></li>
+    </ul>
+    <hr>
     
-    <!-- 折りたたみタブ -->    
-    <h3><div onclick="obj=document.getElementById('open2').style; obj.display=(obj.display=='none')?'block':'none';">
-<a style="cursor:pointer;">▼一周</a>
-	</div></h3>
-	<!--// 折りたたみタブ -->
-
-    <!-- 一周計算フォームとスクリプト -->    
-    <div id="open2" style="display:none;clear:both;">
-    <form name="wmp" onsubmit="return false;">
-      <p>
-      風車型 <br>
-      <input type="number" name="n2" min="1" max="500" step="1" required>周 <br>
-      </p>
-      <p>
-      Spawn Frequency: 0-40 (default 1)<br>
-      1チャンクに含まれるダイヤモンドの鉱脈数 (デフォルトは１)<br>
-      <input type="number" name="d2" min="0" max="40" step="1" value="1" required>鉱脈<br>
-      </p>
-      <p>
-      洞窟係数 (経験則 最新 1.98)<br>
-      <input type="number" name="c2" min="0" value="1.98" step="0.01"><br>
-      </p>
-      <p>
-      ブランチマイニングで採掘する鉱石 (未実装)<br>
-      <label><input type="checkbox" name="pickore2" value="0.09">石炭鉱石</label>
-      <label><input type="checkbox" name="pickore2" value="0.08">鉄鉱石</label>
-      <label><input type="checkbox" name="pickore2" value="0.01">金鉱石</label>
-      <label><input type="checkbox" name="pickore2" value="0.09">レッドストーン鉱石</label>
-      <label><input type="checkbox" name="pickore2" value="0.01">ラピスラズリ鉱石</label>
-      <label><input type="checkbox" name="pickore2" value="0.00">エメラルド鉱石</label>
-      </p>
-      <p>
-      ピッケルのエンチャント <br>
-      <label><input type="radio" name="ench2" value="1" checked>なし</label>
-      <label><input type="radio" name="ench2" value="1.33">幸運Ⅰ</label>
-      <label><input type="radio" name="ench2" value="1.75">幸運Ⅱ</label>
-      <label><input type="radio" name="ench2" value="2.20">幸運Ⅲ</label>
-      </p>
-      <input type="submit" id="calc2" value="計算" onclick="Calc_windmill_per(n2,d2,c2,ench2)">
-      <input type="reset" value="リセット">
-      <p>
-      ダイヤ鉱石期待値 <output id="ore_result2"></output> 個<br>
-      ダイヤモンド期待値 <output id="result2"></output> 個
-      </p>
-    </form>
-    </div>
-
-    <!-- 折りたたみタブ -->    
-    <!--<h3><div onclick="obj=document.getElementById('open3').style; obj.display=(obj.display=='none')?'block':'none';">
-<a style="cursor:pointer;">▼目的を決めて周回計算</a>
-	</div></h3>-->
-	<!--// 折りたたみタブ -->
-
-    <!-- 一周計算フォームとスクリプト -->    
-    <!--<div id="open3" style="display:none;clear:both;">
-    <form name="wmp" onsubmit="return false;">
-      <p>
-      目的のダイヤ鉱石数 <br>
-      <input type="number" name="ore_input" min="1" max="300000" step="1" required>個 <br>
-      　または<br>
-      目的のダイヤモンド個数 <br>
-      <input type="number" name="diamond_input" min="1" max="1000000" step="1" required>個 <br>
-      </p>
-      <p>
-      Spawn Frequency: 0-40 (default 1)<br>
-      1チャンクに含まれるダイヤモンドの鉱脈数 (デフォルトは１)<br>
-      <input type="number" name="d3" min="0" max="40" step="1" value="1" required>鉱脈<br>
-      </p>
-      <p>
-      洞窟係数 (経験則 今のところ2.5)<br>
-      <input type="number" name="c3" min="0" value="2.5" step="0.1"><br>
-      </p>
-      <p>
-      ピッケルのエンチャント <br>
-      <label><input type="radio" name="ench3" value="1" checked>なし</label>
-      <label><input type="radio" name="ench3" value="1.33">幸運Ⅰ</label>
-      <label><input type="radio" name="ench3" value="1.75">幸運Ⅱ</label>
-      <label><input type="radio" name="ench3" value="2.20">幸運Ⅲ</label>
-      </p>
-      <input type="submit" id="calc3" value="計算" onclick="Calc_windmill_per(n2,d2,c2,ench2)">
-      <input type="reset" value="リセット">
-      <p>
-      風車型ブランチマイニング 周回期待値<br>
-      <output id="result3"></output> 周
-      </p>
-    </form>
-    </div>-->
-    </div>
+    <!-- Contacts -->
+    <h2><span class="fi-icon fi-laptop" aria-hidden="true"></span>Contacts</h2>
+    <ul type="circle">
+      <li><p class="li-main"><a href="https://twitter.com/KizahashiLuca">Twitter</a> <span class="fi-listicon fi-social-twitter" aria-hidden="true"></span></p>
+      <p class="li-sub">はっちゃけた私がそこにはいます.<br><a href="https://twitter.com/KizahashiLuca?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @KizahashiLuca</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p></li>
+      <li><p class="li-main"><a href="http://www.nicovideo.jp/user/22833109">niconico</a> <img src="./img/niconico-icon.png" width="18" height="18"></p>
+      <p class="li-sub">基本的な活動領域です.</p></li>
+      <li><p class="li-main"><a href="https://www.youtube.com/user/KizahashiLuca">YouTube</a> <span class="fi-listicon fi-social-youtube" aria-hidden="true"></span></p>
+      <p class="li-sub">動画を投稿したりしています.</a></p></li>
+      <script src="https://apis.google.com/js/platform.js"></script>
+<div class="g-ytsubscribe" data-channel="KizahashiLuca" data-layout="full" data-count="hidden"></div>
+      <li><p class="li-main"><a href="https://twitcasting.tv/kizahashiluca/">TwitCasting</a> <img src="./img/twitcasting-icon.png" width="18" height="18"></p>
+      <p class="li-sub">生声でおしゃべりしています.</p></li>
+      <li><p class="li-main"><a href="https://steamcommunity.com/id/kizahashiluca/">Steam</a> <span class="fi-listicon fi-social-steam" aria-hidden="true"></span></p>
+      <p class="li-sub">一緒に遊んでくれる人を探しています.</a></p></li>
+      <li><p class="li-main"><a href="https://github.com/KizahashiLuca">GitHub</a> <span class="fi-listicon fi-social-github" aria-hidden="true"></span></p>
+      <p class="li-sub">プロジェクトなどのバージョン管理をしています.</p></li>
+      <li><p class="li-main"><a href="https://github.com/KizahashiLuca">note</a> <img src="./img/note-icon.png" width="18" height="18"></p>
+      <p class="li-sub">動画の裏話などをまとめています.</p></li>
+      <li><p class="li-main"><a href="https://www.amazon.co.jp/registry/wishlist/27OGK6USLGZSJ/ref=cm_sw_r_tw_ws_x_EqT0zbPEXT421">Amazon Wishlist</a> <span class="fi-listicon fi-social-amazon" aria-hidden="true"></span></p>
+      <p class="li-sub">すっごく欲しいものを載せています.</p></li>
+      <li><p class="li-main"><a href="kizahashi.luca.25@gmail.com">E-mail</a> <span class="fi-listicon fi-mail" aria-hidden="true"></span></p>
+      <p class="li-sub">マルチのお誘いとか来たら嬉しいです.</p></li>
+    </ul>
+    <hr>
+    
+    <!-- Projects -->
+    <h2><span class="fi-icon fi-torsos-all" aria-hidden="true"></span>Projects</h2>
+    <p class="jap">現在私が携わっている、Minecraft有志でのプラグイン開発・周辺ツール開発のプロジェクトです。</p>
+    <p class="eng">The projects of Minecraft plug-in or peripherals development that I am involved in are as below.</p>
+    <ul type="circle">
+      <li><p class="jap-li"><a href="https://kizahashiluca.github.io/chunk_dependent_windmill_like_branch_mining_calcurator/">チャンク依拠風車型ブランチマイニングの期待値計算ツール</a><br>　- yumetodoさん, でいりぃさんと共同で開発</p>
+      <p class="eng-li">Calcurator of Windmill Mining in accordance with chunks<br>　- developed jointly with 'yumetodo' and 'daily'</p></li>
+      <li><p class="jap-li">Minecraft PvP - Flag Battle プラグイン</p>
+      <p class="eng-li">Minecraft Plug-in : Minecraft PvP - Flag Battle</p></li>
+      <li><p class="jap-li">Minecraft PvP - Run Away (仮題) プラグイン</p>
+      <p class="eng-li">Minecraft Plug-in : Minecraft PvP - Run Away (tentative name)</p></li>
+      <li><p class="jap-li">Minecraft 高さ縛り プラグイン/MOD</p>
+      <p class="eng-li">Minecraft Plug-in or MOD : Minecraft Height Limit</p></li>
+    </ul>
   </div>
-</div>
+  </div>
 </body>
 </html>

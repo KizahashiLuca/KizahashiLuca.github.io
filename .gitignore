@@ -1,0 +1,9 @@
+# ignore
+
+.git/
+
+fonts/svgs
+
+fonts/foundation-icons.svg
+
+fonts/preview.html

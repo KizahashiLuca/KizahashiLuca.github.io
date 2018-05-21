@@ -6,6 +6,34 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+@media (min-width: 1200px){
+.container {
+    width: 1170px;
+}
+}
+@media (min-width: 992px){
+.container {
+    width: 970px;
+}
+}
+@media (min-width: 768px){
+.container {
+    width: 750px;
+}
+}
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+    
 .h1, .h2, .h3, h1, h2, h3 {
     margin-top: 20px;
     margin-bottom: 10px;
@@ -17,22 +45,75 @@ div{
     padding: 30px 15px;
     margin-bottom: 30px;
     color: inherit;
-    background-color: #eee;
+    background-color: #ddd;
 }
 .intro {
     padding: 10px 20px 30px;
 }
+.jap {
+    margin-left: 15px;
+}
+.eng {
+    margin-left: 20px;
+    margin-top: -10px;
+    margin-bottom: 30px;
+    color: #777;
+}
+.jap-li {
+    margin-left: 5px;
+}
+.eng-li {
+    margin-left: 10px;
+    margin-top: -10px;
+    margin-bottom: 30px;
+    color: #777;
+}
+.li-main {
+    margin-left: 5px;
+}
+.li-sub {
+    margin-left: 20px;
+    margin-top: -10px;
+}
 .calc {
     padding: 10px 20px 30px;
 }
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
 h2 {
     display: block;
-    font-size: 1.5em;
+    font-size: 30px;
     -webkit-margin-before: 0.83em;
     -webkit-margin-after: 0.83em;
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
-    font-weight: bold;
+}
+.fi-icon{
+    margin-left: 10px;
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'foundation-icons';
+    font-size: 40px;
+    font-style: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -webkit-margin-end: 0.1em;
+}
+.fi-listicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'foundation-icons';
+    font-size: 150%;
+    font-style: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -webkit-margin-end: 0.1em;
 }
 h3 {
     display: block;
