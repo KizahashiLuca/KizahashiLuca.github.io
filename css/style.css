@@ -115,11 +115,3 @@ h2 {
     -webkit-font-smoothing: antialiased;
     -webkit-margin-end: 0.1em;
 }
-h3 {
-    display: block;
-    -webkit-margin-before: 0.83em;
-    -webkit-margin-after: 0.83em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    font-weight: bold;
-}
